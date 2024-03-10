@@ -11,6 +11,9 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
+    // Apply the application plugin to add support for linter.
+    id("io.gitlab.arturbosch.detekt") version "1.23.5"
 }
 
 repositories {
@@ -29,12 +32,15 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+
+    // linter
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.5")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
